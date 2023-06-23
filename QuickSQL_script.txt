@@ -1,0 +1,86 @@
+users /auditcols
+    id 
+    login vc(255) /nn
+    email /nn
+    first_name
+    last_name
+    date_of_birth
+    weight num
+    height num
+    gender /check M,F
+    image file
+
+meal_types /auditcols
+    id
+    user_id /fk users 
+    name /nn
+    hour num /nn
+    minutes num /nn
+
+units /auditcols
+    id
+    name /nn
+    description 
+
+allergens /auditcols
+    id
+    name /nn
+    description 
+
+ingredient_types /auditcols
+    id  
+    ingredient_type_id
+    name /nn
+
+ingredients /auditcols
+    user_id
+    id
+    name /nn
+    description
+    type_id /fk ingredient_types /nn
+    kcal_per_100g num
+    protein_per_100g num
+    carbo_per_100g num
+    fat_per_100g num
+    is_meat
+    is_animal_origin       
+    brand
+    available_only_in_shop /check Y,N
+    image file
+
+ingredients_units /auditcols
+    ingredient_id /nn
+    unit_id /nn
+    id
+    gram_per_unit num /nn
+
+ingredients_allergens /auditcols
+    ingredient_id
+    allergen_id
+    id
+
+recipes /auditcols
+    user_id
+    id 
+    name /nn
+    recipe_description
+    preparation_description
+    preparation_time  num
+
+recipes_images /auditcols
+    recipe_id /nn
+    id
+    image file
+
+rating /auditcols
+    recipe_id /nn
+    user_id /nn
+    id
+    rating num /between 1 and 10
+    the_comment
+
+recipes_ingredients /auditcols
+    recipe_id /nn
+    ingredient_id /nn
+    unit_id /nn
+    amount num /nn
